@@ -1,17 +1,32 @@
 const express = require('express')
-require('dotenv').config()
 const { graphqlHTTP } = require('express-graphql')
-const port = process.env.PORT || 5000
 const schema = require('./schema/schema')
+
+const port = process.env.PORT || 5000
+require('dotenv').config()
 
 const app = express()
 
+/**
+ * GraphiQL
+ * GraphiQL is a great tool for debugging and inspecting a server,
+ * so we recommend running it whenever your application is in development mode.
+ */
+
+/**
+ * app.use()
+ * the middleware function is executed when the base of the requested path matches path.
+ */
 app.use(
   '/graphql',
   graphqlHTTP({
     schema,
-    graphiql: process.env.NODE_ENV === 'development'
+    graphiql: process.env.NODE_ENV === 'development' // Since we configured graphqlHTTP with graphiql: true, you can use the GraphiQL tool to manually issue GraphQL queries
   })
 )
-
-app.listen(port, console.log(`Server running on port ${port}`))
+/**
+ * app.listen()
+ * Starts a UNIX socket and listens for connections on the given path.
+ * This method is identical to Node’s http.Server.listen().
+ */
+app.listen(port, console.log(`Running a GraphQL API server at port ${port}`))
