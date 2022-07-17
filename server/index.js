@@ -1,6 +1,8 @@
 const express = require('express')
 const { graphqlHTTP } = require('express-graphql')
 const schema = require('./schema/schema')
+const colors = require('colors')
+const connectDB = require('./config/db')
 
 const port = process.env.PORT || 5000
 require('dotenv').config()
@@ -12,6 +14,9 @@ const app = express()
  * GraphiQL is a great tool for debugging and inspecting a server,
  * so we recommend running it whenever your application is in development mode.
  */
+
+// Connect to the MongoDB database through Mongoose
+connectDB()
 
 /**
  * app.use()
