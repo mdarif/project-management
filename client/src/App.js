@@ -1,13 +1,48 @@
 import Header from './components/Header'
+import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client'
+import Clients from './components/Clients'
+
+const cache = new InMemoryCache({
+  typePolicies: {
+    Query: {
+      fields: {
+        clients: {
+          merge (existing, incoming) {
+            return incoming
+          }
+        },
+        projects: {
+          merge (existing, incoming) {
+            return incoming
+          }
+        }
+      }
+    }
+  }
+})
+
+/**
+ * ApolloClient
+ * we'll initialize ApolloClient, passing its constructor a configuration object
+ * with the 'uri' and 'cache' fields:
+ *
+ * 'uri' specifies the URL of our GraphQL server.
+ * 'cache' is an instance of InMemoryCache, which Apollo Client uses to cache query
+ * results after fetching them.
+ */
+const client = new ApolloClient({
+  uri: 'http://localhost:5000/graphql',
+  cache
+})
 
 function App () {
   return (
-    <>
+    <ApolloProvider client={client}>
       <Header />
       <div className='container'>
-        <h1>Hello</h1>
+        <Clients />
       </div>
-    </>
+    </ApolloProvider>
   )
 }
 
