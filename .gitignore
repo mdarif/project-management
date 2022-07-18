@@ -131,3 +131,6 @@ dist
 
 # Environment file
 .env
+
+# etc
+.DS_Store
