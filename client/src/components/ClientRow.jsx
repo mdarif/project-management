@@ -3,20 +3,44 @@ import { useMutation } from '@apollo/client';
 import { DELETE_CLIENT } from '../mutations/clientMutations';
 import { GET_CLIENTS } from '../queries/clientQueries';
 
-/**
- * useMutation
- * The useMutation React hook is the primary API for executing
- * mutations in an Apollo application.
- *
- * https://www.apollographql.com/docs/react/data/mutations/
- */
-
 export default function ClientRow({ client }) {
+  /**
+   * useMutation
+   *
+   * The useMutation React hook is the primary API for executing
+   * mutations in an Apollo application.
+   *
+   * https://www.apollographql.com/docs/react/data/mutations/
+   */
+
   const [deleteClient] = useMutation(DELETE_CLIENT, {
     variables: { id: client.id },
-    // refetchQueries: [{ query: GET_CLIENTS }],
+    /**
+     * Updating local data
+     *
+     * When you execute a 'mutation', you modify back-end data. Usually,
+     * you then want to update your 'locally cached data' to reflect the
+     * back-end modification.
+     *
+     * For example, if you execute a mutation to add an item to your to-do
+     * list, you also want that item to appear in your cached copy of the list.
+     */
+
+    // refetchQueries: [{ query: GET_CLIENTS }], more at https://www.apollographql.com/docs/react/data/mutations/#refetching-queries
     update(cache, { data: { deleteClient } }) {
+      /**
+       * readQuery
+       * The 'readQuery' method enables you to execute a GraphQL query directly on your cache.
+       */
       const { clients } = cache.readQuery({ query: GET_CLIENTS });
+      /**
+       * writeQuery
+       * The 'writeQuery' method enables you to write data to your cache in a shape that matches a GraphQL query.
+       * It resembles 'readQuery', except that it requires a data option.
+       *
+       * Any changes you make to cached data with writeQuery are not pushed to your GraphQL server.
+       * If you reload your environment, these changes disappear.
+       */
       cache.writeQuery({
         query: GET_CLIENTS,
         data: {
