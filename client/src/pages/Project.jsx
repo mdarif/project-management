@@ -5,7 +5,25 @@ import Spinner from '../components/Spinner';
 import { GET_PROJECT } from '../queries/projectQueries';
 
 export default function Project() {
+  /**
+   * UseParams
+   *
+   * The useParams hook returns an object of key/value pairs of the dynamic params
+   * from the current URL that were matched by the <Route path>.
+   * Child routes inherit all params from their parent routes.
+   */
   const { id } = useParams();
+
+  /**
+   * useQuery
+   *
+   * The useQuery React hook is the primary API for executing queries in an Apollo application.
+   * To run a query within a React component, call useQuery and pass it a GraphQL query string.
+   * When your component renders, useQuery returns an object from Apollo Client that contains
+   * loading, error, and data properties you can use to render your UI.
+   *
+   * https://www.apollographql.com/docs/react/data/queries/#usequery-api
+   */
   const { loading, error, data } = useQuery(GET_PROJECT, { variables: { id } });
 
   if (loading) return <Spinner />;

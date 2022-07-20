@@ -8,7 +8,7 @@ export default function AddClientModal() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
-  const [isClosed, setClose] = useState(true);
+  const [, setClose] = useState(true);
 
   /**
    * useMutation

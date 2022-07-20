@@ -4,6 +4,16 @@ import ClientRow from './ClientRow';
 import Spinner from './Spinner';
 
 export default function Clients() {
+  /**
+   * useQuery
+   *
+   * The useQuery React hook is the primary API for executing queries in an Apollo application.
+   * To run a query within a React component, call useQuery and pass it a GraphQL query string.
+   * When your component renders, useQuery returns an object from Apollo Client that contains
+   * loading, error, and data properties you can use to render your UI.
+   *
+   * https://www.apollographql.com/docs/react/data/queries/#usequery-api
+   */
   const { loading, error, data } = useQuery(GET_CLIENTS);
 
   if (loading)
