@@ -3,6 +3,7 @@ version: "3"
 services:
   frontend:
     build: client
+    image: client:client
     container_name: client
     restart: always
     ports:
@@ -18,6 +19,7 @@ services:
 
   backend:
     build: server
+    image: server:server
     container_name: server
     restart: always
     ports:
