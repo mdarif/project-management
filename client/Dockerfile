@@ -11,7 +11,8 @@ RUN mkdir -p /app
 WORKDIR /app
 
 # Copy the app package and package-lock.json file
-COPY package*.json ./
+COPY package.json /app/package.json
+COPY package-lock.json /app/package-lock.json
 
 # Install app dependencies
 RUN npm install
@@ -19,7 +20,7 @@ RUN npm install
 # RUN mkdir node_modules/.cache && chmod -R 777 node_modules/.cache
 
 # Bundle app source
-COPY . .
+COPY . /app
 
 EXPOSE 3000
 
