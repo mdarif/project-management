@@ -5,7 +5,7 @@ FROM node:16-buster
 # while docker-compose is used to run Docker containers.
 
 # Create an application directory
-# RUN mkdir -p /app
+RUN mkdir -p /usr/src/app
 
 # CD into directory
 WORKDIR /usr/src/app
