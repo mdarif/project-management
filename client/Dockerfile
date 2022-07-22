@@ -16,7 +16,7 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 # Install app dependencies
-RUN npm ci
+RUN npm install
 
 # RUN mkdir node_modules/.cache && chmod -R 777 node_modules/.cache
 
