@@ -15,7 +15,7 @@ COPY package.json /app/package.json
 COPY package-lock.json /app/package-lock.json
 
 # Install app dependencies
-RUN npm install
+RUN npm ci
 
 # Bundle app source
 COPY . /app
