@@ -41,6 +41,7 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v3
         with:
+          file: ./server/Dockerfile
           push: true
           tags: user/app:latest
   
