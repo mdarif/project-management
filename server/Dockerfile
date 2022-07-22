@@ -4,11 +4,15 @@ FROM node:16-buster
 # Dockerfile describes how to build Docker images, 
 # while docker-compose is used to run Docker containers.
 
+# Create an application directory
+RUN mkdir -p /app
+
 # CD into directory
 WORKDIR /app
 
-# Install app dependencies
-COPY package*.json /app/package.json
+# Copy the app package and package-lock.json file
+COPY package.json /app/package.json
+COPY package-lock.json /app/package-lock.json
 
 # Install app dependencies
 RUN npm install
