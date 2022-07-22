@@ -10,8 +10,8 @@ services:
       - 3000:3000
     stdin_open: true
     volumes:
-      - ./client:/app
-      - /app/node_modules
+      - ./client:/usr/app
+      - /usr/app/node_modules
     networks:
       - react-express
     depends_on:
@@ -25,8 +25,8 @@ services:
     ports:
       - 5000:5000
     volumes:
-      - ./server:/app
-      - /app/node_modules
+      - ./server:/usr/src/app
+      - /usr/src/app/node_modules
     depends_on:
       - mongo
     networks:
