@@ -16,12 +16,7 @@ export default function Clients() {
    */
   const { loading, error, data } = useQuery(GET_CLIENTS);
 
-  if (loading)
-    return (
-      <p>
-        <Spinner />
-      </p>
-    );
+  if (loading) return <Spinner />;
   if (error) return <p>Something went wrong!</p>;
 
   return (

@@ -2,6 +2,7 @@ import { FaTrash } from 'react-icons/fa';
 import { useMutation } from '@apollo/client';
 import { DELETE_CLIENT } from '../mutations/clientMutations';
 import { GET_CLIENTS } from '../queries/clientQueries';
+import { GET_PROJECTS } from '../queries/projectQueries';
 
 export default function ClientRow({ client }) {
   /**
@@ -15,6 +16,7 @@ export default function ClientRow({ client }) {
 
   const [deleteClient] = useMutation(DELETE_CLIENT, {
     variables: { id: client.id },
+    refetchQueries: [{ query: GET_CLIENTS }, { query: GET_PROJECTS }],
     /**
      * Updating local data
      *
@@ -27,27 +29,30 @@ export default function ClientRow({ client }) {
      */
 
     // refetchQueries: [{ query: GET_CLIENTS }], more at https://www.apollographql.com/docs/react/data/mutations/#refetching-queries
-    update(cache, { data: { deleteClient } }) {
-      /**
-       * readQuery
-       * The 'readQuery' method enables you to execute a GraphQL query directly on your cache.
-       */
+
+    /**
+     * readQuery
+     * The 'readQuery' method enables you to execute a GraphQL query directly on your cache.
+     */
+
+    /**
+     * writeQuery
+     * The 'writeQuery' method enables you to write data to your cache in a shape that matches a GraphQL query.
+     * It resembles 'readQuery', except that it requires a data option.
+     *
+     * Any changes you make to cached data with writeQuery are not pushed to your GraphQL server.
+     * If you reload your environment, these changes disappear.
+     */
+    /*     update(cache, { data: { deleteClient } }) {
       const { clients } = cache.readQuery({ query: GET_CLIENTS });
-      /**
-       * writeQuery
-       * The 'writeQuery' method enables you to write data to your cache in a shape that matches a GraphQL query.
-       * It resembles 'readQuery', except that it requires a data option.
-       *
-       * Any changes you make to cached data with writeQuery are not pushed to your GraphQL server.
-       * If you reload your environment, these changes disappear.
-       */
+
       cache.writeQuery({
         query: GET_CLIENTS,
         data: {
           clients: clients.filter((client) => client.id !== deleteClient.id),
         },
       });
-    },
+    }, */
   });
 
   return (

@@ -5,6 +5,14 @@ import Home from './pages/Home'
 import NotFound from './pages/NotFound'
 import Project from './pages/Project'
 
+/**
+ * InMemoryCache
+ *
+ * Apollo Client stores the results of its GraphQL queries in a normalized, in-memory cache.
+ * This enables your client to respond to future queries for the same data without sending
+ * unnecessary network requests.
+ */
+
 const cache = new InMemoryCache({
   typePolicies: {
     Query: {
@@ -26,6 +34,7 @@ const cache = new InMemoryCache({
 
 /**
  * ApolloClient
+ *
  * we'll initialize ApolloClient, passing its constructor a configuration object
  * with the 'uri' and 'cache' fields:
  *

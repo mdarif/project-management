@@ -55,11 +55,10 @@ export default function AddClientModal() {
     e.preventDefault();
 
     if (name === '' || email === '' || phone === '') {
-      alert('Please fill all the fields');
-    } else {
-      addClient(name, email, phone);
-      setClose(false);
+      return alert('Please fill all the fields');
     }
+
+    addClient(name, email, phone);
 
     setName('');
     setEmail('');
@@ -74,10 +73,10 @@ export default function AddClientModal() {
         data-bs-toggle='modal'
         data-bs-target='#addClientModal'
       >
-        <div className='d-flex align-items-center'>
+        <span className='d-flex align-items-center'>
           <FaUser className='icon' />
-          <div>Add Client</div>
-        </div>
+          <span>Add Client</span>
+        </span>
       </button>
 
       <div
