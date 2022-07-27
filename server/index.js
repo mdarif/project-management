@@ -8,6 +8,8 @@ const connectDB = require('./config/db')
 const port = process.env.PORT || 5000
 require('dotenv').config()
 
+// console.log('env>>>>>', process.env.MONGO_URI)
+
 const app = express()
 
 /**
