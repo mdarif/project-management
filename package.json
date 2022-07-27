@@ -2,7 +2,7 @@
   "name": "project-management-app",
   "version": "1.0.0",
   "description": "A FullStack MERN application with GraphQL Server/Client.",
-  "main": "index.js",
+  "main": "server/index.js",
   "scripts": {
     "start": "node server/index.js",
     "server": "nodemon server/index.js --ignore client",
