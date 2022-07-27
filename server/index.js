@@ -4,6 +4,7 @@ const schema = require('./schema/schema')
 const colors = require('colors')
 const cors = require('cors')
 const connectDB = require('./config/db')
+const path = require('path')
 
 const port = process.env.PORT || 5000
 require('dotenv').config()
