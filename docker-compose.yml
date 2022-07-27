@@ -3,11 +3,11 @@ version: "3"
 services:
 
   backend:
-    # build: server
-    build:
-      context: ./
-      dockerfile: ./server/Dockerfile
-    image: server:server
+    build: server
+    # build:
+    #   context: ./
+    #   dockerfile: ./server/Dockerfile
+    # image: server:server
     container_name: server
     restart: always
     ports:
@@ -33,11 +33,11 @@ services:
       - 27017
 
   frontend:
-    # build: client
-    build:
-      context: ./
-      dockerfile: ./client/Dockerfile
-    image: client:client
+    build: client
+    # build:
+    #   context: ./
+    #   dockerfile: ./client/Dockerfile
+    # image: client:client
     container_name: client
     restart: always
     ports:
@@ -54,3 +54,6 @@ services:
 networks:
   react-express:
   express-mongo:
+volumes:
+  mongo-data:
+    driver: local
