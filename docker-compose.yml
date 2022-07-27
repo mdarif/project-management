@@ -5,8 +5,8 @@ services:
   backend:
     # build: server
     build:
-      context: ./
-      dockerfile: ./server/Dockerfile
+      context: ./server
+      dockerfile: Dockerfile
     # image: server:server
     container_name: server
     restart: always
@@ -35,8 +35,8 @@ services:
   frontend:
     # build: client
     build:
-      context: ./
-      dockerfile: ./client/Dockerfile
+      context: ./client
+      dockerfile: Dockerfile
     # image: client:client
     container_name: client
     restart: always
