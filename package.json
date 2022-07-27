@@ -1,11 +1,14 @@
 {
   "name": "project-management-app",
   "version": "1.0.0",
-  "description": "A Full Stack MERN application with GraphQL Server/Client.",
+  "description": "A FullStack MERN application with GraphQL Server/Client.",
   "main": "index.js",
   "scripts": {
     "start": "node server/index.js",
-    "server": "nodemon server/index.js"
+    "server": "nodemon server/index.js --ignore client",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "keywords": [],
   "author": "Mohammad Arif",
