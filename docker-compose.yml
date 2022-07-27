@@ -1,24 +1,12 @@
 version: "3"
 
 services:
-  frontend:
-    build: client
-    image: client:client
-    container_name: client
-    restart: always
-    ports:
-      - 3000:3000
-    stdin_open: true
-    volumes:
-      - ./client:/usr/app
-      - /usr/app/node_modules
-    networks:
-      - react-express
-    depends_on:
-      - backend
 
   backend:
-    build: server
+    # build: server
+    build:
+      context: ./server
+      dockerfile: Dockerfile
     image: server:server
     container_name: server
     restart: always
@@ -43,6 +31,26 @@ services:
       - express-mongo
     expose:
       - 27017
+
+  frontend:
+    # build: client
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    image: client:client
+    container_name: client
+    restart: always
+    ports:
+      - 3000:3000
+    stdin_open: true
+    volumes:
+      - ./client:/usr/app
+      - /usr/app/node_modules
+    networks:
+      - react-express
+    depends_on:
+      - backend
+
 networks:
   react-express:
   express-mongo:

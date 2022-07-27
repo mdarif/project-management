@@ -5,7 +5,7 @@ FROM node:16-buster
 # while docker-compose is used to run Docker containers.
 
 # Create an application directory
-RUN mkdir -p /usr/src/app
+# RUN mkdir -p /usr/src/app
 
 # CD into directory
 WORKDIR /usr/src/app
@@ -13,17 +13,16 @@ WORKDIR /usr/src/app
 # Copy the app package and package-lock.json file
 # COPY package.json /app/package.json
 # COPY package-lock.json /app/package-lock.json
-COPY package.json /usr/src/app/package.json
-COPY package-lock.json /usr/src/app/package-lock.json
+COPY package*.json ./
 
 
 # Install app dependencies
-RUN npm install
+RUN npm install --silent
 
 # RUN mkdir node_modules/.cache && chmod -R 777 node_modules/.cache
 
 # Bundle app source
-COPY . /usr/src/app
+COPY . .
 
 EXPOSE 3000
 
