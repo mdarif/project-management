@@ -7,8 +7,7 @@ const connectDB = require('./config/db')
 
 const port = process.env.PORT || 5000
 require('dotenv').config()
-
-// console.log('env>>>>>', process.env.MONGO_URI)
+// require('dotenv').config({ debug: process.env.DEBUG })
 
 const app = express()
 
@@ -34,6 +33,21 @@ app.use(
     graphiql: process.env.NODE_ENV === 'development' // Since we configured graphqlHTTP with graphiql: true, you can use the GraphiQL tool to manually issue GraphQL queries
   })
 )
+
+// Serve Frontend
+if (process.env.NODE_ENV === 'production') {
+  // Set build folder as static folder
+  app.use(express.static(path.join(__dirname, '../client/build')))
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/build/index.html'))
+  })
+} else {
+  app.get('/', (req, res) => {
+    res.status(200).json({ message: 'Welcome to the Project Management App' })
+  })
+}
+
 /**
  * app.listen()
  * Starts a UNIX socket and listens for connections on the given path.

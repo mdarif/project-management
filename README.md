@@ -105,4 +105,4 @@ A Full Stack MERN app with GraphQL Server/Client.
 
 ## Heroku Deployment
 
-- https://github-finder-ts.vercel.app/
+- https://mern-project-mgmt.herokuapp.com/

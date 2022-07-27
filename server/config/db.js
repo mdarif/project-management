@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
-require('dotenv').config()
+// require('dotenv').config()
 
-// console.log('process.env', process.env.MONGO_URI)
+// console.log('process.env>>>>>>>>>>>>>>>>>>>>>>', process.env.MONGO_URI)
 
 /**
  * mongoose
