@@ -32,6 +32,7 @@ jobs:
           image: arifibnshabbir/project-management:client
           # tags: v1, latest
           registry: docker.io
+          directory: ./client
           # dockerfile: Dockerfile
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
