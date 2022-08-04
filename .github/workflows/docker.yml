@@ -33,7 +33,7 @@ jobs:
           tags: client
           registry: docker.io
           directory: ./client
-          # dockerfile: Dockerfile
+          dockerfile: Dockerfile
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
