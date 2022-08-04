@@ -7,7 +7,7 @@ services:
     build:
       context: ./server
       dockerfile: Dockerfile
-    # image: server:server
+    image: project-management:server
     container_name: server
     restart: always
     ports:
@@ -38,7 +38,7 @@ services:
     build:
       context: ./client
       dockerfile: Dockerfile
-    # image: client:client
+    image: project-management:client
     container_name: client
     restart: always
     ports:
