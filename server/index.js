@@ -3,11 +3,11 @@ const { graphqlHTTP } = require('express-graphql')
 const schema = require('./schema/schema')
 const colors = require('colors')
 const cors = require('cors')
+require('dotenv').config()
 const connectDB = require('./config/db')
 const path = require('path')
 
 const port = process.env.PORT || 5000
-require('dotenv').config()
 // require('dotenv').config({ debug: process.env.DEBUG })
 
 const app = express()
@@ -34,6 +34,8 @@ app.use(
     graphiql: process.env.NODE_ENV === 'development' // Since we configured graphqlHTTP with graphiql: true, you can use the GraphiQL tool to manually issue GraphQL queries
   })
 )
+
+console.log('process.env.NODE_ENV from index.js', process.env.NODE_ENV)
 
 // Serve Frontend
 if (process.env.NODE_ENV === 'production') {
