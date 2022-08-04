@@ -40,21 +40,21 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
       -
-        name: Build and push
+        name: Build and Push Client Docker Image
         uses: docker/build-push-action@v3
         with:
-          context: client
-          file: ./client/Dockerfile
+          context: ./client/Dockerfile
+          # file: ./client/Dockerfile
           push: true
-          tags: user/app:latest
+          tags: arifibnshabbir/project-management:client
   
 
       # Runs a single command using the runners shell
       - name: docker build client
         run: |
-          docker build ./client -t client:client
+          docker build ./client -t arifibnshabbir/project-management:client
 
       # Runs a set of commands using the runners shell
       - name: docker build server
         run: |
-          docker build ./server -t server:server
+          docker build ./server -t arifibnshabbir/project-management:server
