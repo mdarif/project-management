@@ -35,7 +35,7 @@ jobs:
           # directory: ./client
           dockerfile: ./client/Dockerfile
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
       # -
       #   name: Set up QEMU
