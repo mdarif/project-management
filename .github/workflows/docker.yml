@@ -29,8 +29,8 @@ jobs:
       - uses: mr-smithers-excellent/docker-build-push@v5
         name: Build & push Docker image
         with:
-          image: arifibnshabbir/project-management:client
-          # tags: v1, latest
+          image: arifibnshabbir/project-management
+          tags: client
           registry: docker.io
           directory: ./client
           # dockerfile: Dockerfile
