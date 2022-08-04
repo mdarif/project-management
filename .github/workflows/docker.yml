@@ -29,10 +29,10 @@ jobs:
       - uses: mr-smithers-excellent/docker-build-push@v5
         name: Build & push Docker image
         with:
-          image: arifibnshabbir/project-management
+          image: arifibnshabbir/project-management:client
           # tags: v1, latest
           registry: docker.io
-          # dockerfile: Dockerfile.ci
+          # dockerfile: Dockerfile
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
