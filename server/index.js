@@ -35,8 +35,6 @@ app.use(
   })
 )
 
-console.log('process.env.NODE_ENV from index.js', process.env.NODE_ENV)
-
 // Serve Frontend
 if (process.env.NODE_ENV === 'production') {
   // Set build folder as static folder

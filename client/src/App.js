@@ -13,6 +13,8 @@ import Project from './pages/Project'
  * unnecessary network requests.
  */
 
+// console.log('process.env App.js', process.env)
+
 const cache = new InMemoryCache({
   typePolicies: {
     Query: {
@@ -42,8 +44,18 @@ const cache = new InMemoryCache({
  * 'cache' is an instance of InMemoryCache, which Apollo Client uses to cache query
  * results after fetching them.
  */
+
+let uri
+
+if (process.env.NODE_ENV === 'production') {
+  uri = `/graphql`
+} else {
+  uri = process.env.REACT_APP_CLIENT_GRAPHQL
+}
+
 const client = new ApolloClient({
-  uri: 'http://localhost:5000/graphql',
+  uri: process.env.REACT_APP_CLIENT_GRAPHQL,
+  // uri: 'https://mern-project-mgmt.herokuapp.com/graphql',
   cache
 })
 
