@@ -48,16 +48,13 @@ const cache = new InMemoryCache({
 let uri
 
 if (process.env.NODE_ENV === 'production') {
-  uri = `https://mern-project-mgmt.herokuapp.com/graphql`
+  uri = process.env.REACT_APP_SERVER_GRAPHQL
 } else {
   uri = process.env.REACT_APP_CLIENT_GRAPHQL
 }
 
-console.log('uri', uri)
-
 const client = new ApolloClient({
   uri,
-  // uri: 'https://mern-project-mgmt.herokuapp.com/graphql',
   cache
 })
 
