@@ -13,10 +13,10 @@
   </a>
 </p>
 
-> A MERN app about Project Management System to add/manage clients & Projects using GraphGL Server/Client.
+> A Dockerize MERN app using Github Actions about Project Management System to add/manage clients & Projects using GraphGL Server/Client.
 
 # Architecture
-A Full Stack MERN app with GraphQL Server/Client.
+A Full Stack Dockerize MERN app with GraphQL Server/Client.
 
 ![MERN Architecture](./client/src/images/architecture-mern-graphql.png)
 
@@ -27,6 +27,183 @@ A Full Stack MERN app with GraphQL Server/Client.
 ### How GraphQL API works?
 
 ![GraphQL API](./client/src/images/graph-ql.png)
+
+## What is a container?
+> A container is the standard unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another.
+
+## Docker Container
+A Docker container image is a lightweight, standalone, executable package of software that includes everything needed to run an application: code, runtime, system tools, system libraries and settings. Container images become containers at runtime and in the case of Docker containers — images become containers when they run on Docker Engine.
+
+## Docker Hub
+Docker Hub is a cloud-based repository service provided by Docker in which users create, test, store and distribute container images. Through Docker Hub, a user can access public, open-source image repositories, as well as use space to create their own private repositories, automated build functions, webhooks and workgroups.
+
+## Overview
+We are going to Dockerize Node.JS, React, and MongoDB into separate containers. Then we are going to use **DOCKER COMPOSE** to run the multi-container application.
+
+At last, from a single command, we can create and start all the services from our configuration.
+
+### Initializing the Project
+Clone the GitHub link to a local folder in your computer. Open the folder using VSCode or any text editor of your choice.
+
+### Docker Files
+Now, we need to create a Dockerfile for the server and the client. The **Dockerfile **essentially contains the build instructions to build the image.
+
+Let’s start by creating the Dockerfile for the client (our React Frontend).
+
+In the client folder, create a file called **Dockerfile **without any extension.
+
+Write the following lines of code in the file:
+
+#### Dockerfile for React client
+```
+FROM node:16-buster
+
+# What is Dockerfile?
+# Dockerfile describes how to build Docker images, 
+# while docker-compose is used to run Docker containers.
+
+# Create an application directory
+RUN mkdir -p /usr/src/app
+
+# CD into directory
+WORKDIR /usr/src/app
+
+# Copy the app package and package-lock.json file
+# COPY package.json /app/package.json
+# COPY package-lock.json /app/package-lock.json
+COPY package*.json /usr/src/app/
+
+# Install app dependencies
+RUN npm install
+
+# RUN mkdir node_modules/.cache && chmod -R 777 node_modules/.cache
+
+# Bundle app source
+COPY . /usr/src/app/
+
+EXPOSE 3000
+
+CMD ["npm", "start"]
+```
+
+#### Dockerfile for Backend
+```
+FROM node:16-buster
+
+# What is Dockerfile?
+# Dockerfile describes how to build Docker images, 
+# while docker-compose is used to run Docker containers.
+
+# Create an application directory
+RUN mkdir -p /usr/src/app
+
+# CD into directory
+WORKDIR /usr/src/app
+
+# Copy the app package and package-lock.json file
+# COPY package.json /app/package.json
+# COPY package-lock.json /app/package-lock.json
+COPY package*.json /usr/src/app/
+
+# Install app dependencies
+RUN npm install
+
+# RUN mkdir node_modules/.cache && chmod -R 777 node_modules/.cache
+
+# Bundle app source
+COPY . /usr/src/app/
+
+EXPOSE 3000
+
+CMD [ "npm", "start" ]
+```
+
+### Docker Compose
+> Compose is a tool for defining and running multi-container Docker applications. With Compose, you use a YAML file to configure your application’s services. Then, with a single command, you create and start all the services from your configuration.
+
+To run our entire application together, i.e run all containers parallelly, we need to configure the docker-compose file.
+
+In the main directory of the project, (outside the server/client) create a file named docker-compose.yml .
+
+Write these contents into the file.
+
+```
+version: "3"
+
+services:
+
+  backend:
+    # build: server
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    image: project-management:server
+    container_name: server
+    restart: always
+    ports:
+      - 5000:5000
+    volumes:
+      - ./server:/usr/src/app
+      - /usr/src/app/node_modules
+    depends_on:
+      - mongo
+    env_file: ./server/.env
+    networks:
+      - express-mongo
+      - react-express
+
+  mongo:
+    container_name: mongo
+    restart: always
+    image: mongo:4.2.0
+    volumes:
+      - ./data:/data/db
+    networks:
+      - express-mongo
+    expose:
+      - 27017
+
+  frontend:
+    # build: client
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    image: project-management:client
+    container_name: client
+    restart: always
+    ports:
+      - 3000:3000
+    stdin_open: true
+    volumes:
+      - ./client:/usr/app
+      - /usr/app/node_modules
+    networks:
+      - react-express
+    depends_on:
+      - backend
+
+networks:
+  react-express:
+  express-mongo:
+volumes:
+  mongo-data:
+    driver: local
+```
+
+### Creating the Build
+To create the build for the entire application, we need to run the following command: 
+```
+docker-compose build
+```
+
+### Starting the Services
+
+### Stopping the containers
+
+
+### Creating the Build
+
+
 
 
 
