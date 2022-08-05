@@ -48,7 +48,7 @@ const cache = new InMemoryCache({
 let uri
 
 if (process.env.NODE_ENV === 'production') {
-  uri = `/graphql`
+  uri = `https://mern-project-mgmt.herokuapp.com/graphql`
 } else {
   uri = process.env.REACT_APP_CLIENT_GRAPHQL
 }
