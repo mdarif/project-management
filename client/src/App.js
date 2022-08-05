@@ -53,8 +53,10 @@ if (process.env.NODE_ENV === 'production') {
   uri = process.env.REACT_APP_CLIENT_GRAPHQL
 }
 
+console.log('uri', uri)
+
 const client = new ApolloClient({
-  uri: process.env.REACT_APP_CLIENT_GRAPHQL,
+  uri,
   // uri: 'https://mern-project-mgmt.herokuapp.com/graphql',
   cache
 })
