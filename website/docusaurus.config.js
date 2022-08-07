@@ -9,11 +9,12 @@ const config = {
   title: 'A Dockerize MERN App',
   tagline:
     'A Dockerize MERN app using Github Actions to push Docker Images to Docker Hub automatically.',
-  url: 'https://mdarif.github.io',
-  baseUrl: '/',
+  url: 'https://github.com',
+  baseUrl: '/project-management/',
   onBrokenLinks: 'ignore',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
+  deploymentBranch: 'gh-pages',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
