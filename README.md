@@ -205,7 +205,53 @@ docker-compose build
 
 
 
+## Automatically build & push the Full Stack Application onto Docker Hub using GitHub Actions
 
+### What are GitHub Actions?
+GitHub Actions is a continuous integration and continuous delivery (CI/CD) platform that allows you to automate your build, test, and deployment pipeline. You can create workflows that build and test every pull request to your repository, or deploy merged pull requests to production.
+
+GitHub Actions goes beyond just DevOps and lets you run workflows when other events happen in your repository. For example, you can run a workflow to automatically add the appropriate labels whenever someone creates a new issue in your repository.
+
+GitHub provides Linux, Windows, and macOS virtual machines to run your workflows, or you can host your own self-hosted runners in your own data center or cloud infrastructure.
+
+![GITHUB ACTIONS](./client/src/images/github-actions-mern-build-image-push-docker-hub.jpg)
+
+### What is a Workflow?
+A workflow is an automated script that runs a set of jobs when an event triggers it. The workflow script is written in a YAML file that is present in the “./github/workflows” directory path of your GitHub repository. These workflows can be triggered based on events. You can have several workflows present for various use cases, For example, you could have one workflow to build and test your application and another to deploy it.
+
+## Developing The Workflow
+Now moving on to the process of developing a workflow to deploy our full-stack application onto DockerHub. Let’s take a look at how we can develop a workflow YAML file for a full-stack application:
+
+Our workflow YAML file is split into 2 halves one for Server Deployment & Client Deployment.
+
+```
+name: Docker CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "master" branch
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "Client-Deployment"
+  Client-Deployment:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+
+
+  # This workflow contains a single job called "Server-Deployment"
+  Server-Deployment:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+```
 
 ## Stacks Used
 - [Apollo GraphQL Client](https://www.apollographql.com/)
@@ -218,6 +264,8 @@ docker-compose build
 - [Express](https://expressjs.com/)
 - [ReactJS](https://reactjs.org/)
 - [NodeJS](https://nodejs.org/en/)
+- [Docker](https://www.docker.com/)
+- [Github Actions](https://github.com/features/actions)
 
 
 ## Folder Structure
@@ -280,54 +328,18 @@ docker-compose build
         └── schema.js
 ```
 
-## Automatically build & push the Full Stack Application onto Docker Hub using GitHub Actions
-
-### What are GitHub Actions?
-GitHub Actions is a continuous integration and continuous delivery (CI/CD) platform that allows you to automate your build, test, and deployment pipeline. You can create workflows that build and test every pull request to your repository, or deploy merged pull requests to production.
-
-GitHub Actions goes beyond just DevOps and lets you run workflows when other events happen in your repository. For example, you can run a workflow to automatically add the appropriate labels whenever someone creates a new issue in your repository.
-
-GitHub provides Linux, Windows, and macOS virtual machines to run your workflows, or you can host your own self-hosted runners in your own data center or cloud infrastructure.
-
-![GITHUB ACTIONS](./client/src/images/github-actions-mern-build-image-push-docker-hub.jpg)
-
-### What is a Workflow?
-A workflow is an automated script that runs a set of jobs when an event triggers it. The workflow script is written in a YAML file that is present in the “./github/workflows” directory path of your GitHub repository. These workflows can be triggered based on events. You can have several workflows present for various use cases, For example, you could have one workflow to build and test your application and another to deploy it.
-
-## Developing The Workflow
-Now moving on to the process of developing a workflow to deploy our full-stack application onto DockerHub. Let’s take a look at how we can develop a workflow YAML file for a full-stack application:
-
-Our workflow YAML file is split into 2 halves one for Server Deployment & Client Deployment.
-
-```
-name: Docker CI
-
-# Controls when the workflow will run
-on:
-  # Triggers the workflow on push or pull request events but only for the "master" branch
-  push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
-jobs:
-  # This workflow contains a single job called "Client-Deployment"
-  Client-Deployment:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-
-
-
-  # This workflow contains a single job called "Server-Deployment"
-  Server-Deployment:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-```
-
 ## Heroku Deployment
+> Heroku integrates with GitHub to make it easy to deploy code living on GitHub to apps running on Heroku. When GitHub integration is configured for a Heroku app, Heroku can automatically build and release (if the build is successful) pushes to the specified GitHub repo.
+
+### Enabling GitHub Integration
+You can configure GitHub integration in the Deploy tab of apps in the Heroku Dashboard.
+
+### Manual Deploys
+With manual deploys, you can create an immediate deployment of any branch from the GitHub repo that’s connected to your app. Use manual deploys if you want to control when changes are deployed to Heroku.
+
+### Automatic Deploys
+When you enable automatic deploys for a GitHub branch, Heroku builds and deploys all pushes to that branch. If, for example, you have a development app on Heroku, you can configure pushes to your GitHub development branch to be automatically built and deployed to that app.
+
+That's it, you are done now!
 
 - https://mern-project-mgmt.herokuapp.com/
