@@ -9,16 +9,16 @@ const config = {
   title: 'A Dockerize MERN App',
   tagline:
     'A Dockerize MERN app using Github Actions to push Docker Images to Docker Hub automatically.',
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://mdarif.github.io',
   baseUrl: '/',
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'ignore',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'mdarif', // Usually your GitHub org/user name.
+  projectName: 'project-management', // Usually your repo name.
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
@@ -74,7 +74,7 @@ const config = {
             position: 'left',
             label: 'Tutorials'
           },
-          { to: '/blog', label: 'Blog', position: 'left' },
+          // { to: '/blog', label: 'Blog', position: 'left' },
           {
             href: 'https://github.com/mdarif/project-management',
             position: 'left',
@@ -90,7 +90,7 @@ const config = {
             items: [
               {
                 label: 'Tutorial',
-                to: '/docs/intro'
+                to: '/docs/tutorials/intro'
               }
             ]
           },
@@ -114,10 +114,6 @@ const config = {
           {
             title: 'More',
             items: [
-              {
-                label: 'Blog',
-                to: '/blog'
-              },
               {
                 label: 'GitHub',
                 href: 'https://github.com/facebook/docusaurus'

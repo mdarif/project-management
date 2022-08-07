@@ -5,7 +5,7 @@ sidebar_label: Getting Started
 hide_title: true
 ---
 
-# Getting Started with Redux Toolkit
+# Getting Started with Dockerize MERN App
 
 ## Purpose
 
