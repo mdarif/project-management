@@ -5,9 +5,9 @@ name: GitHub Pages
 on:
   push:
     branches:
-      - main
+      - master
     paths:
-      - '.github/workflows/deploy.yml'
+      - '.github/workflows/pages.yml'
       - 'website/**'
   pull_request:
 
