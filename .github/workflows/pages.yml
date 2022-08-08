@@ -73,6 +73,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '17'
+          
       - uses: redkubes/docusaurus-deploy-action@v1
         with:
           source-folder: website
