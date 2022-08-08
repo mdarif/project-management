@@ -53,7 +53,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           # publish_branch: gh-pages  # default: gh-pages
           publish_dir: ./website/build
-          destination_dir: project-management
+          # destination_dir: project-management
           exclude_assets: '.github,exclude-file1,exclude-file2'
           commit_message: ${{ github.event.head_commit.message }}
           # The following lines assign commit authorship to the official
