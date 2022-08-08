@@ -51,7 +51,7 @@ jobs:
         # if: ${{ github.ref == 'refs/heads/master' }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages  # default: gh-pages
+          # publish_branch: gh-pages  # default: gh-pages
           publish_dir: ./website/build
           destination_dir: project-management
           exclude_assets: '.github,exclude-file1,exclude-file2'
