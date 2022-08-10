@@ -9,7 +9,7 @@ const config = {
   title: 'A Dockerize MERN App',
   tagline:
     'A Dockerize MERN app using Github Actions to push Docker Images to Docker Hub automatically.',
-  url: 'https://mdarif.github.io/',
+  url: 'https://mdarif.github.io',
   baseUrl: '/project-management/',
   onBrokenLinks: 'ignore',
   onBrokenMarkdownLinks: 'warn',
