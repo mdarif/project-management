@@ -76,10 +76,6 @@ jobs:
         with:
           node-version: '16'
 
-      # - name: Get npm cache
-      #   id: npm-cache
-      #   run: echo "::set-output name=dir::$(npm cache dir)"
-
       - name: Get npm cache directory
         id: npm-cache-dir
         run: |
@@ -97,7 +93,7 @@ jobs:
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
-        if: ${{ github.ref == 'refs/heads/main' }}
+        # if: ${{ github.ref == 'refs/heads/main' }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./website/build
