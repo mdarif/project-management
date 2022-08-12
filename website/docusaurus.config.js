@@ -11,6 +11,7 @@ const config = {
     'A Dockerize MERN app using Github Actions to push Docker Images to Docker Hub automatically.',
   url: 'https://mdarif.github.io',
   baseUrl: '/project-management/',
+  // baseUrl: '/',
   onBrokenLinks: 'ignore',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
@@ -20,6 +21,7 @@ const config = {
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'mdarif', // Usually your GitHub org/user name.
   projectName: 'project-management', // Usually your repo name.
+  trailingSlash: false,
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
