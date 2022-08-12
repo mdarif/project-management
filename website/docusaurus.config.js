@@ -6,21 +6,18 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula')
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'A Dockerize MERN App',
-  tagline:
-    'A Dockerize MERN app using Github Actions to push Docker Images to Docker Hub automatically.',
+  title: 'My Site',
+  tagline: 'Dinosaurs are cool',
   url: 'https://mdarif.github.io',
-  baseUrl: '/',
-  // baseUrl: '/',
-  onBrokenLinks: 'ignore',
+  baseUrl: '/project-management/',
+  onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  deploymentBranch: 'gh-pages',
+  favicon: 'img/favicon.ico',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'mdarif', // Usually your GitHub org/user name.
   projectName: 'project-management', // Usually your repo name.
-  trailingSlash: false,
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
@@ -60,27 +57,23 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'Project Management',
+        title: 'My Site',
         logo: {
-          alt: 'Project Management Logo',
+          alt: 'My Site Logo',
           src: 'img/logo.svg'
         },
         items: [
           {
-            to: 'docs/introduction/getting-started',
+            type: 'doc',
+            docId: 'intro',
             position: 'left',
-            label: 'Getting Started'
+            label: 'Tutorial'
           },
+          { to: '/blog', label: 'Blog', position: 'left' },
           {
-            to: 'docs/tutorials/intro',
-            position: 'left',
-            label: 'Tutorials'
-          },
-          // { to: '/blog', label: 'Blog', position: 'left' },
-          {
-            href: 'https://github.com/mdarif/project-management',
-            position: 'left',
-            label: 'GitHub'
+            href: 'https://github.com/facebook/docusaurus',
+            label: 'GitHub',
+            position: 'right'
           }
         ]
       },
@@ -92,7 +85,7 @@ const config = {
             items: [
               {
                 label: 'Tutorial',
-                to: '/docs/tutorials/intro'
+                to: '/docs/intro'
               }
             ]
           },
@@ -117,13 +110,17 @@ const config = {
             title: 'More',
             items: [
               {
+                label: 'Blog',
+                to: '/blog'
+              },
+              {
                 label: 'GitHub',
                 href: 'https://github.com/facebook/docusaurus'
               }
             ]
           }
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Mohammad Arif`
+        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`
       },
       prism: {
         theme: lightCodeTheme,
