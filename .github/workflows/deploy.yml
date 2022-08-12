@@ -74,22 +74,22 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: '14'
+          node-version: '16'
 
-      - name: Get yarn cache
-        id: yarn-cache
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: Get npm cache
+        id: npm-cache
+        run: echo "::set-output name=dir::$(npm cache dir)"
 
       - name: Cache dependencies
         uses: actions/cache@v2
         with:
-          path: ${{ steps.yarn-cache.outputs.dir }}
-          key: ${{ runner.os }}-website-${{ hashFiles('**/yarn.lock') }}
+          path: ${{ steps.npm-cache.outputs.dir }}
+          key: ${{ runner.os }}-website-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-website-
 
-      - run: yarn install --frozen-lockfile
-      - run: yarn build
+      - run: npm install --frozen-lockfile
+      - run: npm run build
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
