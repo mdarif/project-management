@@ -76,9 +76,9 @@ jobs:
         with:
           node-version: '16'
 
-      - name: Get npm cache
-        id: npm-cache
-        run: echo "::set-output name=dir::$(npm cache dir)"
+      # - name: Get npm cache
+      #   id: npm-cache
+      #   run: echo "::set-output name=dir::$(npm cache dir)"
 
       - name: Get npm cache directory
         id: npm-cache-dir
