@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         working-directory: ./website
         run: npm install --frozen-lockfile
-
+        
       - name: Build website
         working-directory: ./website
         run: npm run build
@@ -36,7 +36,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           # Build output to publish to the `gh-pages` branch:
-          publish_dir: ./build
+          publish_dir: ./website/build
           # destination_dir: subdir # A destination subdirectory on a publishing branch. The default is empty.
           # The following lines assign commit authorship to the official
           # GH-Actions bot for deploys to `gh-pages` branch:
