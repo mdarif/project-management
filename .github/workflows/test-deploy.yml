@@ -20,7 +20,7 @@ jobs:
 
       - name: Install dependencies
         working-directory: ./website
-        run: npm ci --frozen-lockfile
+        run: npm install --frozen-lockfile
       - name: Test build website
         working-directory: ./website
         run: npm run build
