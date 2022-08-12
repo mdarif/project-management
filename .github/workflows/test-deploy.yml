@@ -1,5 +1,7 @@
 name: Test deployment
 
+# When a new pull request is made to 'master', there's an action that ensures the site builds successfully, without actually deploying. This job will be called test-deploy
+
 on:
   pull_request:
     branches:

@@ -14,7 +14,6 @@ const config = {
   // baseUrl: '/',
   onBrokenLinks: 'ignore',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
   deploymentBranch: 'gh-pages',
 
   // GitHub pages deployment config.
