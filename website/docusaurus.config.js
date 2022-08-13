@@ -6,8 +6,9 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula')
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
+  title: 'A Dockerize MERN App',
+  tagline:
+    'A Dockerize MERN app about Project Management System to add/manage clients & Projects using GraphGL Server/Client.',
   url: 'https://mdarif.github.io',
   baseUrl: '/project-management/',
   onBrokenLinks: 'throw',
@@ -57,7 +58,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'My Site',
+        title: 'A Dockerize MERN App',
         logo: {
           alt: 'My Site Logo',
           src: 'img/logo.svg'
@@ -71,7 +72,7 @@ const config = {
           },
           { to: '/blog', label: 'Blog', position: 'left' },
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/mdarif/project-management',
             label: 'GitHub',
             position: 'right'
           }
@@ -115,12 +116,12 @@ const config = {
               },
               {
                 label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus'
+                href: 'https://github.com/mdarif/project-management'
               }
             ]
           }
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`
+        copyright: `Copyright © ${new Date().getFullYear()} Mohammad Arif, Inc. Built with Docusaurus.`
       },
       prism: {
         theme: lightCodeTheme,
